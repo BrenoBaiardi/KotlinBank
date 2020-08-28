@@ -6,14 +6,14 @@ fun main() {
 
     println("depositando na conta do Alex")
     contaAlex.deposita(50.0)
-    println(contaAlex.getSaldo())
+    println(contaAlex.saldo)
 
     println("depositando na conta da Fran")
     contaFran.deposita(70.0)
-    println(contaFran.getSaldo())
+    println(contaFran.saldo)
 
     println("transferinfo 100 de Alex pra Fran")
-    if (contaAlex.transfere(1000.0,contaFran)) {
+    if (contaAlex.transfere(100.0,contaFran)) {
         println("Sucesso")
     }    else {
         println("Falha")
@@ -24,7 +24,9 @@ fun main() {
 class Conta {
     private var titular = ""
     private var numero = 0
-    private var saldo = 0.0
+    //will be coded as a property
+    var saldo = 0.0
+        private set // the RIGHT way to use setters
 
     constructor(titular: String, numero: Int) {
         this.titular = titular
@@ -32,11 +34,7 @@ class Conta {
     }
 
 
-    fun getSaldo():Double{
-        return this.saldo
-    }
-
-    fun deposita(valor: Double) {
+       fun deposita(valor: Double) {
         this.saldo += valor
     }
 
