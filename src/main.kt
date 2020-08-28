@@ -1,22 +1,16 @@
 fun main() {
     println("Bem vindo ao Bytebank")
-    val contaAlex = Conta()
-    contaAlex.titular = "Alex"
-    contaAlex.numero = 1000
-    contaAlex.saldo = 200.0
-    val contaFran = Conta()
-    contaFran.titular = "Fran"
-    contaFran.numero = 1001
-    contaFran.saldo = 300.0
+    val contaAlex = Conta("Alex",1001)
+    val contaFran = Conta("Fran",1002)
 
 
     println("depositando na conta do Alex")
     contaAlex.deposita(50.0)
-    println(contaAlex.saldo)
+    println(contaAlex.getSaldo())
 
     println("depositando na conta da Fran")
     contaFran.deposita(70.0)
-    println(contaFran.saldo)
+    println(contaFran.getSaldo())
 
     println("transferinfo 100 de Alex pra Fran")
     if (contaAlex.transfere(1000.0,contaFran)) {
@@ -24,15 +18,23 @@ fun main() {
     }    else {
         println("Falha")
     }
-    println(contaAlex.saldo)
-    println(contaFran.saldo)
+
 }
 
 class Conta {
-    var titular = ""
-    var numero = 0
-    var saldo = 0.0
+    private var titular = ""
+    private var numero = 0
+    private var saldo = 0.0
 
+    constructor(titular: String, numero: Int) {
+        this.titular = titular
+        this.numero = numero
+    }
+
+
+    fun getSaldo():Double{
+        return this.saldo
+    }
 
     fun deposita(valor: Double) {
         this.saldo += valor
