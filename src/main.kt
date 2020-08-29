@@ -1,7 +1,7 @@
 fun main() {
     println("Bem vindo ao Bytebank")
-    val contaAlex = Conta("Alex",1001)
-    val contaFran = Conta("Fran",1002)
+    val contaAlex = Conta("Alex", 1001)
+    val contaFran = Conta("Fran", 1002)
 
 
     println("depositando na conta do Alex")
@@ -13,28 +13,24 @@ fun main() {
     println(contaFran.saldo)
 
     println("transferinfo 100 de Alex pra Fran")
-    if (contaAlex.transfere(100.0,contaFran)) {
+    if (contaAlex.transfere(100.0, contaFran)) {
         println("Sucesso")
-    }    else {
+    } else {
         println("Falha")
     }
 
 }
 
-class Conta {
-    private var titular = ""
-    private var numero = 0
+//this constructor will already require and initialize the variables
+class Conta(
+        val titular: String,
+        val numero: Int
+) {
     //will be coded as a property
-    var saldo = 0.0
+    var saldo: Double = 0.0
         private set // the RIGHT way to use setters
 
-    constructor(titular: String, numero: Int) {
-        this.titular = titular
-        this.numero = numero
-    }
-
-
-       fun deposita(valor: Double) {
+    fun deposita(valor: Double) {
         this.saldo += valor
     }
 
