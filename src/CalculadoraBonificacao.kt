@@ -4,7 +4,7 @@ class CalculadoraBonificacao {
 
     fun registra(funcionario: Funcionario) {
         println("bonificação do usuário ${funcionario.nome} registrada")
-        this.total += funcionario.bonificacao()
+        this.total += funcionario.bonificacao
     }
 
 //    The following steps are not required since

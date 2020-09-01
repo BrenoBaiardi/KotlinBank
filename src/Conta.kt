@@ -1,5 +1,5 @@
 //this constructor will already require and initialize the variables
-class Conta(
+open class Conta(
         val titular: String,
         val numero: Int
 ) {
@@ -11,7 +11,8 @@ class Conta(
         this.saldo += valor
     }
 
-    fun saca(valor: Double): Boolean {
+    //should be open or else it cannot be overwritten
+    open fun saca(valor: Double): Boolean {
         if (this.saldo >= valor) {
             this.saldo -= valor
             return true
