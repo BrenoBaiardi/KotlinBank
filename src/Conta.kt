@@ -1,28 +1,23 @@
 //this constructor will already require and initialize the variables
-open class Conta(
+abstract class Conta(
         val titular: String,
         val numero: Int
 ) {
     //will be coded as a property
     var saldo: Double = 0.0
-        private set // the RIGHT way to use setters
+        protected set // protected in order to subclasses to have acess
 
     fun deposita(valor: Double) {
         this.saldo += valor
     }
 
     //should be open or else it cannot be overwritten
-    open fun saca(valor: Double): Boolean {
-        if (this.saldo >= valor) {
-            this.saldo -= valor
-            return true
-        }
-        return false
-    }
+    abstract fun saca(valor: Double)
 
     fun transfere(valor: Double, destino: Conta): Boolean {
-        if (this.saca(valor)) {
-            destino.saca(valor)
+        if (this.saldo >= valor) {
+            saldo -= valor
+            destino.deposita(valor)
             return true
         }
         return false

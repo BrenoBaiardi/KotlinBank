@@ -5,8 +5,10 @@ class ContaCorrente(
         titular = titular,
         numero = numero
 ) {
-    override fun saca(valor: Double): Boolean {
+    override fun saca(valor: Double) {
         val valorComTaxa = valor + 0.1
-        return super.saca(valorComTaxa)
+        if (this.saldo>=valorComTaxa){
+            this.saldo-=valorComTaxa
+        }
     }
 }
