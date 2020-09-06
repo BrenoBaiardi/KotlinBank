@@ -12,15 +12,7 @@ abstract class Conta(
     }
 
     //should be open or else it cannot be overwritten
+    //abstract is already open
     abstract fun saca(valor: Double)
-
-    fun transfere(valor: Double, destino: Conta): Boolean {
-        if (this.saldo >= valor) {
-            saldo -= valor
-            destino.deposita(valor)
-            return true
-        }
-        return false
-    }
 
 }

@@ -6,6 +6,8 @@ class ContaSalario(
         numero
 ) {
     override fun saca(valor: Double) {
-        TODO("Not yet implemented")
+        if (this.saldo>=valor){
+            this.saldo-=valor
+        }
     }
 }
